@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html data-ng-app="kbApp" ng-csp>
+
+<head>
+    <title>Offerpop Knowledge Base</title>
+</head>
+
+<body>
+    <h1>Offerpop Knowledge Base</h1>
+    <div>
+        <div ng-controller="mainDirectory">
+            
+            <select ng-model="currentDir" ng-options="nav.name for nav in navigation">
+            	<option></option>
+            </select>
+
+			<div id="current-portal" ng-include="currentDir.url"></div>
+
+        </div>
+
+	
+
+    </div>
+   	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
