@@ -13,6 +13,11 @@
   //     "scripts": ["js/background.js"]
   //   }
   // }
+  ,"content_scripts": [{
+    "js": [ "js/jquery_v1.11.1.js", "js/background.js" ],
+    "all_frames": true,
+    "matches": [ "http://*/*", "https://*/*"]
+  }]
   , "permissions": [
     "debugger",
     "https://docs.google.com/feeds/",
