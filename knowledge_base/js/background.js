@@ -1,15 +1,48 @@
-$('.PageContent').on('click',function(){
-  // var currentClass = this.className;
-  // var currentId = this.id;
-  var currentTagName = this.tagName;
-  var children = $(this).children().last();
+var elementArray = ['div', 'img', 'h1', 'h2', 'p', 'br', 'b', 'span', 'a'];
+var cssName = [];
 
-    // alert(currentClass);
-    // alert(currentId);
-    // alert(currentTagName);
-    console.log(children);
+function validateParent(element){
+  console.log(elem.tagName);
+      var parent = $(elem.that).parent()
+        ,parentIdName = parent.attr('id')
+        ,parentClassName = parent.attr('class');
 
-});
+      console.log('parentIdName: ' + parentIdName +
+                  'parentClassName: ' + parentClassName);
+}
+
+function validate(elem){
+    if (elem.idName){
+      cssName.unshift(elem.idName);
+      return false;
+    } else if (elem.idName === '' && elem.className === ''){
+
+    }
+}
+
+for (var i=0; i<elementArray.length; i++){
+     $(elementArray[i]).on('click',function(e){
+          var currentInfo = {
+            that : this
+            ,tagName : this.tagName
+            ,idName : this.id
+            ,className : this.className
+          }
+
+            console.log('tagName: ' + currentInfo.tagName +
+                        ' idName: ' + currentInfo.idName +
+                        ' className: ' + currentInfo.className);
+
+          // var bool =
+          validate(currentInfo);
+            var joinedName = cssName.join(' ');
+            console.log('joinedName: ' + joinedName);
+            cssName = [];
+            console.log('cssName: ' + cssName);
+          e.stopPropagation();
+
+     });
+}
 
 // chrome.app.runtime.onLaunched.addListener(function(launchData) {
 //   chrome.app.window.create('../main.html', {
