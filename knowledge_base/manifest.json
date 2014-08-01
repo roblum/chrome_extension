@@ -19,7 +19,7 @@
     "matches": [ "http://*/*", "https://*/*"]
   }]
   , "permissions": [
-    "debugger",
+    // "debugger",
     "https://docs.google.com/feeds/",
     "https://docs.googleusercontent.com/",
     "https://spreadsheets.google.com/feeds/",
