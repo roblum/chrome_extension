@@ -2,8 +2,7 @@ var elementArray = ['div', 'img', 'h1', 'h2', 'p', 'br', 'b', 'span', 'a'];
 var cssName = [];
 
 function validateParent(element){
-  console.log(elem.tagName);
-      var parent = $(elem.that).parent()
+      var parent = $(element.that).parent()
         ,parentIdName = parent.attr('id')
         ,parentClassName = parent.attr('class');
 
@@ -13,10 +12,26 @@ function validateParent(element){
 
 function validate(elem){
     if (elem.idName){
-      cssName.unshift(elem.idName);
+      cssName.unshift('#' + elem.idName);
       return false;
-    } else if (elem.idName === '' && elem.className === ''){
+    } else if (elem.className){
+        var totalClasses = $('body ' + elem.className);
+          if (totalClasses > 1){
+            return false;
+          } else {
+            cssName.unshift('.' + elem.className);
+            return false;
+          }
 
+    } else if (elem.idName === '' && elem.className === ''){
+        var subCurrentInfo = {
+          that : elem.that
+          ,tagName : elem.tagName
+          ,idName : elem.id
+          ,className : elem.className
+        } 
+
+      validateParent(subCurrentInfo);
     }
 }
 
