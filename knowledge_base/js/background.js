@@ -40,7 +40,7 @@ function validate(elem){
           ,className : elem.className
         } 
 
-        cssName.unshift(subCurrentInfo.tagName);
+        cssName.unshift(subCurrentInfo.tagName.toLowerCase());
       validateParent(subCurrentInfo);
     }
 }
