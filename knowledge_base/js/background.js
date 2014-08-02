@@ -1,22 +1,31 @@
-var elementArray = ['div', 'img', 'h1', 'h2', 'p', 'br', 'b', 'span', 'a'];
-var cssName = [];
+var elementArray = ['div', 'img', 'h1', 'h2', 'p', 'br', 'b', 'span', 'a'] //List of elements for event handler
+    ,cssHistory = []
+    ,cssName = [];
 
 function validateParent(element){
-      var parent = $(element.that).parent()
-        ,parentIdName = parent.attr('id')
-        ,parentClassName = parent.attr('class');
+      var parentThat = element.that.parentNode
+          ,parentInfo = {
+              tagName : parentThat.tagName
+              ,idName : parentThat.id
+              ,className : parentThat.className
+          }
 
-      console.log('parentIdName: ' + parentIdName +
-                  'parentClassName: ' + parentClassName);
+      console.log('parentIdName: ' + parentInfo.idName +
+                  'parentClassName: ' + parentInfo.className);
+
+      validate(parentInfo); //Check parent element for unique id or class
 }
 
 function validate(elem){
     if (elem.idName){
       cssName.unshift('#' + elem.idName);
       return false;
+
     } else if (elem.className){
         var totalClasses = $('body ' + elem.className);
+        console.log(totalClasses);
           if (totalClasses > 1){
+            console.log('total classes is more than 1');
             return false;
           } else {
             cssName.unshift('.' + elem.className);
@@ -31,6 +40,7 @@ function validate(elem){
           ,className : elem.className
         } 
 
+        cssName.unshift(subCurrentInfo.tagName);
       validateParent(subCurrentInfo);
     }
 }
@@ -52,9 +62,12 @@ for (var i=0; i<elementArray.length; i++){
           validate(currentInfo);
             var joinedName = cssName.join(' ');
             console.log('joinedName: ' + joinedName);
-            cssName = [];
+            
+            cssHistory.push(cssName); //Create a copy of css targeted for History log
+            cssName = []; //Clear out array for next click event
+
             console.log('cssName: ' + cssName);
-          e.stopPropagation();
+          e.stopPropagation(); //Stop event from bubbling up
 
      });
 }
