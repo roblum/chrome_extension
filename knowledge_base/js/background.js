@@ -1,4 +1,4 @@
-var elementArray = ['div', 'img', 'h1', 'h2', 'p', 'br', 'b', 'span', 'a'] //List of elements for event handler
+var elementArray = ['div', 'img', 'h1', 'h2', 'p', 'br', 'b', 'span', 'a', 'textarea', 'input', 'label'] //List of elements for event handler
     ,cssHistory = []
     ,cssName = [];
 
