@@ -4,11 +4,11 @@ libApp.controller('mainDirectory', ['$scope', function($scope){
 
 	$scope.navigation = [
 		{ 
-			name : 'jQuery' 
+			name : 'jquery' 
 			,url : '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>' 
 		}
 		,{ 
-			name : 'Angularjs' 
+			name : 'angularjs' 
 			,url : '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>' 
 		}
 	];
