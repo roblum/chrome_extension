@@ -5,11 +5,13 @@ libApp.controller('mainDirectory', ['$scope', function($scope){
 	$scope.navigation = [
 		{ 
 			name : 'jquery' 
-			,url : '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>' 
+			,pre : '<script src="https://ajax.googleapis.com/ajax/libs/jquery/'
+			,close : '/jquery.min.js"></script>'
 		}
 		,{ 
-			name : 'angularjs' 
-			,url : '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>' 
+			name : 'angularjs'
+			,pre : '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/'
+			,close : '/angular.min.js"></script>'
 		}
 	];
 
