@@ -29,13 +29,17 @@
 
                 <input type="text" ng-model="libraryVersion">
 
-                <select ng-model="jqueryVersions" ng-options="version for version in jquery">
+                <select ng-model="jqueryVersions" ng-options="version for version in jquery" ng-if="jqueryBool">
+                    <option></option>
+                </select>
+
+                <select ng-model="angularVersions" ng-options="version for version in angular" ng-if="angularBool">
                     <option></option>
                 </select>
 
             </div>
 
-            <textarea ng-if="currentDir">{{currentDir.pre}}{{libraryVersion}}{{currentDir.close}}</textarea>
+            <textarea ng-if="currentDir">{{currentDir.pre}}{{jqueryVersions}}{{angularVersions}}{{currentDir.close}}</textarea>
 
         </div>
 
