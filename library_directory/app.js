@@ -3,12 +3,12 @@ var libApp = angular.module('libApp', []);
 libApp.controller('mainDirectory', ['$scope', function($scope){
 
 	$scope.navigation = [
-		{ 
-			name : 'jquery' 
+		{
+			name : 'jquery'
 			,pre : '<script src="https://ajax.googleapis.com/ajax/libs/jquery/'
 			,close : '/jquery.min.js"></script>'
 		}
-		,{ 
+		,{
 			name : 'angularjs'
 			,pre : '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/'
 			,close : '/angular.min.js"></script>'
@@ -22,5 +22,19 @@ libApp.controller('mainDirectory', ['$scope', function($scope){
 	$scope.angular = [
 		"1.2.23", "1.2.22", "1.2.21", "1.2.20", "1.2.19", "1.2.18", "1.2.17", "1.2.16", "1.2.15", "1.2.14", "1.2.13", "1.2.12", "1.2.11", "1.2.10", "1.2.9", "1.2.8", "1.2.7", "1.2.6", "1.2.5", "1.2.4", "1.2.3", "1.2.2", "1.2.1", "1.2.0", "1.0.8", "1.0.7", "1.0.6", "1.0.5", "1.0.4", "1.0.3", "1.0.2", "1.0.1"
 	]
+
+	$scope.jqueryBool = false;
+	$scope.angularBool = false;
+	$scope.$watch("currentDir", function(value){
+			console.log(value)
+			if (value.name === 'jquery'){
+				$scope.jqueryBool = true;
+				$scope.angularBool = false;
+			} else if (value.name === 'angularjs'){
+				$scope.angularBool = true;
+				$scope.jqueryBool = false;
+			}
+		}
+	);
 
 }]);
