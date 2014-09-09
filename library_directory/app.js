@@ -25,6 +25,7 @@ libApp.controller('mainDirectory', ['$scope', function($scope){
 
 	$scope.jqueryBool = false;
 	$scope.angularBool = false;
+	
 	$scope.$watch("currentDir", function(value){
 			console.log(value)
 			if (value.name === 'jquery'){
