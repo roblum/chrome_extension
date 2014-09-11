@@ -38,14 +38,16 @@
 
             </div>
 
-            <textarea ng-if="currentDir">{{currentDir.pre}}{{jquery[$index]}}{{angular[$index]}}{{currentDir.close}}</textarea>
+            <textarea ng-if="currentDir" id="copy-box">{{currentDir.pre}}{{jquery[$index]}}{{angular[$index]}}{{currentDir.close}}</textarea>
+
+            <button id="copy-button" ng-if="jquery[$index] || angular[$index]">Copy</button>
 
         </div>
 
     </div>
    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
     <script src="app.js"></script>
-    <script src="zero_clipboard.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
