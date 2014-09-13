@@ -42,6 +42,7 @@ textarea#copy-box {
 button#copy-button {
     width: 100%;
     outline: none;
+    margin: 0;
 }
 
 
