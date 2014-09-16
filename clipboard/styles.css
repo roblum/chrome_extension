@@ -1,0 +1,37 @@
+body{
+    width:200px;    
+}
+
+input {
+    background: black;
+    border: 0px;
+    padding: 5px 10px;
+    height: 25px;
+    outline: none;
+    color: #fff;
+    float: left;
+    width:180px;
+    font-family: 'Lato', sans-serif;
+    font-weight:300;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+}
+.snippet-container{
+    width: 250px;
+    height: 40px;
+}
+div.copy-button {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    left: -50px;
+    top: 5px;
+    float: left;
+    color: white;
+    background: #0D98BA;
+    padding: 3px 5px;
+    border-radius:5px;
+    cursor:pointer;
+    display:none;
+    opacity:0.9;
+    font-weight:300;
+}
