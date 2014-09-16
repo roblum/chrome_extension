@@ -1,9 +1,11 @@
 body{
     width:200px;    
 }
-
+::selection {
+    background: orange;
+}
 input {
-    background: black;
+    background: gray;
     border: 0px;
     padding: 5px 10px;
     height: 25px;
