@@ -1,7 +1,7 @@
 window.onload = function(){
 
 	copyHover();
-	attachCopy();
+	// attachCopy();
 
 }
 
@@ -16,16 +16,16 @@ window.onload = function(){
 		
 	}
 
-	function attachCopy(){
+	// function attachCopy(){
 
-		$('body').on('click', '.copy-button', function(){
-			var current = this.id.match(/\d+/g)[0];
-			console.log(current);
+	// 	$('body').on('click', '.copy-button', function(){
+	// 		var current = this.id.match(/\d+/g)[0];
+	// 		console.log(current);
 		    
-		    var area = document.querySelector('#snippet-container-' + current + ' input');
-		    area.focus();
-		    document.execCommand('SelectAll');
-		    document.execCommand("Copy", false, null);
-		});
+	// 	    var area = document.querySelector('#snippet-container-' + current + ' input');
+	// 	    area.focus();
+	// 	    document.execCommand('SelectAll');
+	// 	    document.execCommand("Copy", false, null);
+	// 	});
 
-	}
+	// }

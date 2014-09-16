@@ -13,7 +13,7 @@
 
         <div id="snippet-container-{{$index}}" class="snippet-container" ng-repeat="snippet in snippets">
             <input type="text">
-            <div class="copy-button" id="copy-{{$index}}">copy</div>
+            <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)">copy</div>
         </div>
 
         </div>
