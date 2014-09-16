@@ -28,7 +28,7 @@ div.copy-button {
     float: left;
     color: white;
     background: #0D98BA;
-    padding: 3px 5px;
+    padding: 1px 5px 5px;
     border-radius:5px;
     cursor:pointer;
     display:none;
