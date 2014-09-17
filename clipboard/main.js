@@ -16,43 +16,75 @@ window.onload = function(){
 
 	}
 
+
+// ====================================================================
+// ********************* FIREBASE LOGIN ********************* //
+// we would probably save a profile when we register new users on our site
+// we could also read the profile to see if it's null
+// here we will just simulate this with an isNewUser boolean
+var isNewUser = true;
+
 var myRef = new Firebase("https://clipboard-list.firebaseio.com");
-var auth = new FirebaseSimpleLogin(myRef, function(error, user) {
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
   if (error) {
     // an error occurred while attempting login
     console.log(error);
   } else if (user) {
     // user authenticated with Firebase
     console.log("User ID: " + user.uid + ", Provider: " + user.provider);
+    if( isNewUser ) {
+      // save new user's profile into Firebase so we can
+      // list users, use them in security rules, and show profiles
+      myRef.child('users').child(user.uid).set({
+        displayName: user.displayName,
+        provider: user.provider,
+        provider_id: user.id
+      });
+    }
   } else {
     // user is logged out
   }
 });
 
-auth.createUser('inferno.sheep@gmail.com', 'test', function(error, user) {
-  if (error === null) {
-    console.log("User created successfully:", user);
+var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenticated");
+     authRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    alert("authenticated");
   } else {
-    console.log("Error creating user:", error);
+    alert("not authenticated");
   }
 });
 
-    auth.login('password', {
-    email: '<email@domain.com>',
-    password: '<password>',
+$('body').on('click', '#login-submit',function(){
+  var username = $('#username').val()
+    ,password = $('#password').val();
+
+  register(username, password);
+  login(username, password);
+
+});
+
+     function register(username, password) {
+
+          authClient.createUser(username, password, function (error, user) {
+            // if there isn't an error, log the user in
+            // then switch to the userInfo view
+               if (!error) {
+                    login();
+                switchView('userInfo');
+               } else {
+                // display any errors
+                    displayError(error);
+               }
+          });
+
+     }
+
+
+function login(username, password){
+    authClient.login('password', {
+    email: username,
+    password: password,
     rememberMe: true
     });
-
-	// function attachCopy(){
-
-	// 	$('body').on('click', '.copy-button', function(){
-	// 		var current = this.id.match(/\d+/g)[0];
-	// 		console.log(current);
-
-	// 	    var area = document.querySelector('#snippet-container-' + current + ' input');
-	// 	    area.focus();
-	// 	    document.execCommand('SelectAll');
-	// 	    document.execCommand("Copy", false, null);
-	// 	});
-
-	// }
+}
