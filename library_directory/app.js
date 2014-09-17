@@ -12,6 +12,9 @@ libApp.controller('mainDirectory', ['$scope', function($scope){
 			name : 'angularjs'
 			,pre : '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/'
 			,close : '/angular.min.js"></script>'
+		},{
+			name : 'requests'
+			,pre : 'https://offerpop.wufoo.com/forms/offerpop-request-form/'
 		}
 	];
 
