@@ -9,26 +9,39 @@
 
 <body>
 
-<div id="login-container">
-    <input id="username" type="text" />
-    <input id="password" type="password" />
-    <button id="login-submit">Register</button>
-</div>
+    <div id="login-container">
+        
+        <div id="username-container" class="input-container">
+            <input id="username" type="text" />
+        </div>
+        
+        <div id="password-container" class="input-container">
+            <input id="password" type="password" />
+        </div>
 
-    <div>
+        <div id="login-button-container">
+            <button id="register-submit" class="login-button">Register</button>
+            <button id="login-submit" class="login-button">Login</button>
+        </div>
+
+    </div>
+
+    <div id="copy-list-container">
+        
         <div ng-controller="mainDirectory">
 
-        <div id="snippet-container-{{$index}}" class="snippet-container" ng-repeat="snippet in snippets">
-            <input type="text">
-            <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)">copy</div>
-        </div>
+            <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="snippet in snippets">
+                <input type="text">
+                <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)">copy</div>
+            </div>
 
         </div>
+
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="angular.js"></script>
     <script src="app.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="jquery.js"></script>
     <script src='firebase.js'></script>
     <script src="simple_login.js"></script>
     <!-- <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
