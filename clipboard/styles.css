@@ -4,6 +4,13 @@ body{
 ::selection {
     background: orange;
 }
+div{
+    overflow:auto;
+}
+#copy-list-container{
+    display:none;
+}
+
 input {
     background: gray;
     border: 0px;
@@ -18,9 +25,16 @@ input {
     font-size: 15px;
     letter-spacing: 0.4px;
 }
+.input-container{
+    width: 200px;
+    height: 35px;
+    margin-top:5%;
+}
+.input-container:first-child{
+    margin-top:0;
+}
 .snippet-container{
     width: 250px;
-    height: 40px;
 }
 div.copy-button {
     font-family: 'Lato', sans-serif;
@@ -36,4 +50,29 @@ div.copy-button {
     display:none;
     opacity:0.9;
     font-weight:300;
+}
+
+div#login-button-container{
+    float:left;
+    display:none;
+    width:100%;
+}
+#password-container{
+    margin-top:5%;
+}
+
+.login-button{
+    font-family: 'Lato', sans-serif;
+    float: left;
+    color: white;
+    background: #0D98BA;
+    padding: 5px 5px;
+    border-radius:5px;
+    cursor:pointer;
+    opacity:0.9;
+    border: none;
+    font-weight:300;
+    outline: none;
+    width:40%;
+    margin:5% 5% 0 5%;
 }
