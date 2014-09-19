@@ -32,11 +32,15 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
     // an error occurred while attempting login
     console.log('error');
     console.log(error);
+
+    console.log(error.code);
+      // if (error.code)
   } else if (user) {
     // user authenticated with Firebase
     console.log("User ID: " + user.uid + ", Provider: " + user.provider);
     $('#login-container').hide();
     $('#copy-list-container').show();
+    $('#login-container input').val('');
     // if( isNewUser ) {
     //   // save new user's profile into Firebase so we can
     //   // list users, use them in security rules, and show profiles
@@ -47,7 +51,8 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
     //   });
     // }
   } else {
-    $('#login-button-container').show();
+    $('#login-container, #login-button-container').show();
+    $('#copy-list-container').hide();
     console.log('user is logged out');
     // user is logged out
   }
@@ -70,11 +75,21 @@ $('body').on('click', '#login-submit',function(){
 
   // register(username, password);
   login(username, password);
+});
 
+$('body').on('click', '#register-submit',function(){
+  var username = $('#username').val()
+    ,password = $('#password').val();
+
+  // register(username, password);
+  register(username, password);
+});
+
+$('#logout').click(function(){
+  authClient.logout();
 });
 
      function register(username, password) {
-
           authClient.createUser(username, password, function (error, user) {
             // if there isn't an error, log the user in
             // then switch to the userInfo view
@@ -86,7 +101,6 @@ $('body').on('click', '#login-submit',function(){
                     displayError(error);
                }
           });
-
      }
 
 
@@ -99,3 +113,23 @@ function login(username, password){
 
     // authentication();
 }
+
+// compares against error codes to display errors
+  function displayError(error) {
+    var errorMsg = '';
+    switch (error.code) {
+    case "INVALID_EMAIL":
+      errorMsg = "You entered an invalid email";
+      break;
+    case "INVALID_PASSWORD":
+      errorMsg = "You entered an invalid password";
+      break;
+        case "EMAIL_TAKEN":
+             errorMsg = "The email you entered has been taken.";   
+             break;
+    default:
+      errorMsg = "We're not really sure what happened.";
+      break;
+    }
+        $error.text(errorMsg);
+  }
