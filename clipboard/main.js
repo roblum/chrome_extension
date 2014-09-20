@@ -61,11 +61,11 @@ function authentication(){
 var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenticated");
      authRef.on("value", function(snap) {
         if (snap.val() === true) {
-          alert("authenticated");
+          console.log("authenticated");
           pullData();
         } else {
           
-          alert("not authenticated");
+          console.log("not authenticated");
         }
     });
   }
@@ -114,7 +114,7 @@ function login(username, password){
       break;
     }
         $error.text(errorMsg);
-        $error.fadeOut(4000);
+        $error.show().fadeOut(4000);
   }
 
 function pullData(){
