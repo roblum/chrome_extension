@@ -24,6 +24,9 @@ window.onload = function(){
 // here we will just simulate this with an isNewUser boolean
 // var isNewUser = true;
 
+var $error = $('#error-message');
+var $user = $('#username');
+var $pass = $('#password');
 var myRef = new Firebase("https://clipboard-list.firebaseio.com");
 var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
   console.log('user');
@@ -61,33 +64,14 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
 function authentication(){
 var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenticated");
      authRef.on("value", function(snap) {
-  if (snap.val() === true) {
-    alert("authenticated");
-  } else {
-    alert("not authenticated");
+        if (snap.val() === true) {
+          alert("authenticated");
+        } else {
+          alert("not authenticated");
+        }
+    });
   }
-});
-   }
 
-$('body').on('click', '#login-submit',function(){
-  var username = $('#username').val()
-    ,password = $('#password').val();
-
-  // register(username, password);
-  login(username, password);
-});
-
-$('body').on('click', '#register-submit',function(){
-  var username = $('#username').val()
-    ,password = $('#password').val();
-
-  // register(username, password);
-  register(username, password);
-});
-
-$('#logout').click(function(){
-  authClient.logout();
-});
 
      function register(username, password) {
           authClient.createUser(username, password, function (error, user) {
@@ -95,9 +79,9 @@ $('#logout').click(function(){
             // then switch to the userInfo view
                if (!error) {
                     login();
-                switchView('userInfo');
+                  // switchView('userInfo');
                } else {
-                // display any errors
+                  // display any errors
                     displayError(error);
                }
           });
@@ -105,10 +89,10 @@ $('#logout').click(function(){
 
 
 function login(username, password){
-    authClient.login('password', {
-    email: username,
-    password: password,
-    rememberMe: true
+      authClient.login('password', {
+      email: username,
+      password: password,
+      rememberMe: true
     });
 
     // authentication();
@@ -132,4 +116,26 @@ function login(username, password){
       break;
     }
         $error.text(errorMsg);
+        $error.fadeOut(3000);
   }
+
+
+$('body').on('click', '#login-submit',function(){
+  var username = $user.val()
+    ,password = $pass.val();
+
+  // register(username, password);
+  login(username, password);
+});
+
+$('body').on('click', '#register-submit',function(){
+  var username = $user.val()
+    ,password = $pass.val();
+
+  // register(username, password);
+  register(username, password);
+});
+
+$('#logout').click(function(){
+  authClient.logout();
+});
