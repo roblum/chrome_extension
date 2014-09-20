@@ -19,10 +19,6 @@ window.onload = function(){
 
 // ====================================================================
 // ********************* FIREBASE LOGIN ********************* //
-// we would probably save a profile when we register new users on our site
-// we could also read the profile to see if it's null
-// here we will just simulate this with an isNewUser boolean
-// var isNewUser = true;
 
 var $error = $('#error-message')
     ,$user = $('#username')
@@ -36,8 +32,7 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
     // an error occurred while attempting login
     console.log('error');
     console.log(error);
-
-    console.log(error.code);
+    displayError(error);
       // if (error.code)
   } else if (user) {
     // user authenticated with Firebase
@@ -69,6 +64,7 @@ var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenti
           alert("authenticated");
           pullData();
         } else {
+          
           alert("not authenticated");
         }
     });
@@ -118,7 +114,7 @@ function login(username, password){
       break;
     }
         $error.text(errorMsg);
-        $error.fadeOut(3000);
+        $error.fadeOut(4000);
   }
 
 function pullData(){
