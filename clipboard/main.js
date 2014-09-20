@@ -28,7 +28,7 @@ var $error = $('#error-message');
 var $user = $('#username');
 var $pass = $('#password');
 var myRef = new Firebase("https://clipboard-list.firebaseio.com");
-var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
   console.log('user');
   console.log(user);
   if (error) {
@@ -66,6 +66,7 @@ var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenti
      authRef.on("value", function(snap) {
         if (snap.val() === true) {
           alert("authenticated");
+          pullData();
         } else {
           alert("not authenticated");
         }
@@ -95,7 +96,7 @@ function login(username, password){
       rememberMe: true
     });
 
-    // authentication();
+    authentication();
 }
 
 // compares against error codes to display errors
@@ -119,6 +120,19 @@ function login(username, password){
         $error.fadeOut(3000);
   }
 
+function pullData(){
+  console.log('pullData() ran');
+    myRef.on('value', function(ss){
+       console.log('these are all the values');
+       console.log(ss.val());
+       var allData = ss.val();
+    });
+
+    myRef.on('child_changed', function(ss){
+       console.log('child changed:');
+       console.log(ss.val());
+    });
+}
 
 $('body').on('click', '#login-submit',function(){
   var username = $user.val()
