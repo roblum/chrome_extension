@@ -71,19 +71,15 @@ var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenti
   }
 
 
-     function register(username, password) {
-          authClient.createUser(username, password, function (error, user) {
-            // if there isn't an error, log the user in
-            // then switch to the userInfo view
-               if (!error) {
-                    login();
-                  // switchView('userInfo');
-               } else {
-                  // display any errors
-                    displayError(error);
-               }
-          });
-     }
+ function register(username, password) {
+    authClient.createUser(username, password, function (error, user) {
+       if (!error) {
+            login();
+       } else {
+            displayError(error);
+       }
+    });
+ }
 
 
 function login(username, password){
@@ -114,7 +110,7 @@ function login(username, password){
       break;
     }
         $error.text(errorMsg);
-        $error.show().fadeOut(4000);
+        $error.stop().show().fadeOut(4000);
   }
 
 function pullData(){
@@ -136,11 +132,8 @@ $('body').on('click', '.login-button',function(){
     ,password = $pass.val()
     ,that = this.id;
 
-    if (that === 'login-submit'){
-      login(username, password);
-    } else if (that === 'register-submit'){
-      register(username, password);
-    } else if (that === 'logout'){
-      authClient.logout();
-    }
+    if (that === 'login-submit') login(username, password);
+    else if (that === 'register-submit') register(username, password);
+    else if (that === 'logout') authClient.logout();
+
 });
