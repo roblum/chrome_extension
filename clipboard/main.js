@@ -24,10 +24,11 @@ window.onload = function(){
 // here we will just simulate this with an isNewUser boolean
 // var isNewUser = true;
 
-var $error = $('#error-message');
-var $user = $('#username');
-var $pass = $('#password');
-var myRef = new Firebase("https://clipboard-list.firebaseio.com");
+var $error = $('#error-message')
+    ,$user = $('#username')
+    ,$pass = $('#password')
+    ,myRef = new Firebase("https://clipboard-list.firebaseio.com");
+
 var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
   console.log('user');
   console.log(user);
@@ -134,22 +135,16 @@ function pullData(){
     });
 }
 
-$('body').on('click', '#login-submit',function(){
+$('body').on('click', '.login-button',function(){
   var username = $user.val()
-    ,password = $pass.val();
+    ,password = $pass.val()
+    ,that = this.id;
 
-  // register(username, password);
-  login(username, password);
-});
-
-$('body').on('click', '#register-submit',function(){
-  var username = $user.val()
-    ,password = $pass.val();
-
-  // register(username, password);
-  register(username, password);
-});
-
-$('#logout').click(function(){
-  authClient.logout();
+    if (that === 'login-submit'){
+      login(username, password);
+    } else if (that === 'register-submit'){
+      register(username, password);
+    } else if (that === 'logout'){
+      authClient.logout();
+    }
 });
