@@ -20,6 +20,8 @@ window.onload = function(){
 // ====================================================================
 // ********************* FIREBASE LOGIN ********************* //
 
+// (function(){ // keep all variables public for testing
+
 var $error = $('#error-message')
     ,$user = $('#username')
     ,$pass = $('#password')
@@ -137,3 +139,5 @@ $('body').on('click', '.login-button',function(){
     else if (that === 'logout') authClient.logout();
 
 });
+
+// })();
