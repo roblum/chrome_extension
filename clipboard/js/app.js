@@ -15,15 +15,6 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
     	$scope.snippets.$add({text: text});
     }
 
-	// ==============================
-	// $scope.snippets = [
-	// 	{
-	// 		"one" : "one"
-	// 	},{
-	// 		"eno" : "eno"
-	// 	}
-	// ];
-
 	$scope.button = function($index){
 		var current = $index
 	    	,area = document.querySelector('#snippet-container-' + current + ' input');
