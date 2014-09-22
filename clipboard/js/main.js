@@ -12,7 +12,21 @@ var error = document.getElementById('error-message')
     ,copyListContainer = document.getElementById('copy-list-container')
     ,loginInput = document.querySelectorAll('#login-container input')
     ,myRef = new Firebase("https://clipboard-list.firebaseio.com");
-    
+
+
+for (var i=0; i<loginButton.length; i++){
+  loginButton[i].onclick = function(){
+    var username = user.value
+      ,password = pass.value
+      ,that = this.id;
+
+      if (that === 'login-submit') login(username, password);
+      else if (that === 'register-submit') register(username, password);
+      else if (that === 'logout') authClient.logout();
+
+  }
+}
+
 
 var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
   console.log('user');
@@ -31,6 +45,7 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
     
     loginInput[0].value = '';
     loginInput[1].value = '';
+    authentication();
     // if( isNewUser ) {
     //   // save new user's profile into Firebase so we can
     //   // list users, use them in security rules, and show profiles
@@ -50,20 +65,20 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
 });
 
 function authentication(){
-var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenticated");
-     authRef.on("value", function(snap) {
-        if (snap.value === true) {
-          console.log("authenticated");
-          pullData();
-        } else {
-          
-          console.log("not authenticated");
-        }
-    });
-  }
+  var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenticated");
+       authRef.on("value", function(snap) {
+          if (snap.val() === true) {
+            console.log("authenticated");
+            pullData();
+          } else {
+            
+            console.log("not authenticated");
+          }
+      });
+}
 
 
- function register(username, password) {
+function register(username, password) {
     authClient.createUser(username, password, function (error, user) {
        if (!error) {
             login();
@@ -71,7 +86,7 @@ var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenti
             displayError(error);
        }
     });
- }
+}
 
 
 function login(username, password){
@@ -109,27 +124,15 @@ function pullData(){
   console.log('pullData() ran');
     myRef.on('value', function(ss){
        console.log('these are all the values');
-       console.log(ss.value);
-       var allData = ss.value;
+       console.log(ss.val());
+       var allData = ss.val();
     });
 
     myRef.on('child_changed', function(ss){
        console.log('child changed:');
-       console.log(ss.value);
+       console.log(ss.val());
     });
 }
 
-for (var i=0; i<loginButton.length; i++){
-  loginButton[i].onclick = function(){
-    var username = user.value
-      ,password = pass.value
-      ,that = this.id;
-
-      if (that === 'login-submit') login(username, password);
-      else if (that === 'register-submit') register(username, password);
-      else if (that === 'logout') authClient.logout();
-
-  }
-}
 
 // })();
