@@ -32,9 +32,9 @@
         
         <div ng-controller="mainDirectory">
 
-            <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="snippet in snippets">
+            <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="snippet in snippets" ng-mouseover="show()" ng-mouseleave="hide()">
                 <input type="text">
-                <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)">copy</div>
+                <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)" ng-if="hover">copy</div>
             </div>
 
             <div id="logout-container">
@@ -44,6 +44,7 @@
 
     </div>
     <script src="js/angular.js"></script>
+    <script src="js/ng_animate.js"></script>
     <script src="js/app.js"></script>
 
     <script src="js/jquery.js"></script>

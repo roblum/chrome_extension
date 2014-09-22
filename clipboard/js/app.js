@@ -1,4 +1,4 @@
-var clipApp = angular.module('clipApp', []);
+var clipApp = angular.module('clipApp', ['ngAnimate']);
 
 clipApp.controller('mainDirectory', ['$scope', function($scope){
 
@@ -17,6 +17,16 @@ clipApp.controller('mainDirectory', ['$scope', function($scope){
 		    area.focus();
 		    document.execCommand('SelectAll');
 		    document.execCommand("Copy", false, null);
+	}
+
+	$scope.hover = false;
+
+	$scope.show = function(){
+		this.hover = true;
+	}
+
+	$scope.hide = function(){
+		this.hover = false;
 	}
 
 }]);
