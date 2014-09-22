@@ -12,19 +12,16 @@ var error = document.getElementById('error-message')
     ,copyListContainer = document.getElementById('copy-list-container')
     ,loginInput = document.querySelectorAll('#login-container input')
     ,myRef = new Firebase("https://clipboard-list.firebaseio.com");
-
-    console.log(loginInput);
+    
 
 var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
   console.log('user');
   console.log(user);
   if (error) {
     // an error occurred while attempting login
-    console.log('error');
     console.log(error);
 
     displayError(error);
-      // if (error.code)
   } else if (user) {
     // user authenticated with Firebase
     console.log("User ID: " + user.uid + ", Provider: " + user.provider);
