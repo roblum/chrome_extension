@@ -1,4 +1,4 @@
-var clipApp = angular.module('clipApp', ['firebase']);
+var clipApp = angular.module('clipApp', ['ngAnimate', 'firebase']);
 
 clipApp.controller('mainDirectory', function($scope, $firebase){
 
