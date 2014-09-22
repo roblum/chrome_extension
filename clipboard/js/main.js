@@ -1,30 +1,18 @@
-window.onload = function(){
-
-	copyHover();
-	// attachCopy();
-
-}
-
-	function copyHover(){
-
-		$('.snippet-container').mouseenter(function(){
-			console.log('fired');
-			$(this).find('.copy-button').fadeIn();
-		}).mouseleave(function(){
-			$(this).find('.copy-button').fadeOut();
-		});
-
-	}
-
-
 // ====================================================================
 // ********************* FIREBASE LOGIN ********************* //
 
 // (function(){ // keep all variables public for testing
 
-var $error = $('#error-message')
-    ,$user = $('#username')
-    ,$pass = $('#password')
+window.onload = function(){
+
+var error = document.getElementById('error-message')
+    ,loginContainer = document.getElementById('login-container')
+    ,loginButtonContainer = document.getElementById('login-button-container')
+    ,user = document.getElementById('username')
+    ,pass = document.getElementById('password')
+    ,loginButton = document.getElementsByClassName('login-button')
+    ,copyListContainer = document.getElementById('copy-list-container')
+    ,loginInput = document.querySelector('#login-container input')
     ,myRef = new Firebase("https://clipboard-list.firebaseio.com");
 
 var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
@@ -34,14 +22,17 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
     // an error occurred while attempting login
     console.log('error');
     console.log(error);
+
     displayError(error);
       // if (error.code)
   } else if (user) {
     // user authenticated with Firebase
     console.log("User ID: " + user.uid + ", Provider: " + user.provider);
-    $('#login-container').hide();
-    $('#copy-list-container').show();
-    $('#login-container input').val('');
+    
+    loginContainer.display = 'none';
+    copyListContainer.display = 'block';
+    
+    loginInput.value = '';
     // if( isNewUser ) {
     //   // save new user's profile into Firebase so we can
     //   // list users, use them in security rules, and show profiles
@@ -52,8 +43,9 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
     //   });
     // }
   } else {
-    $('#login-container, #login-button-container').show();
-    $('#copy-list-container').hide();
+    loginContainer.display = 'block';
+    loginButtonContainer.display = 'block';
+    copyListContainer.display = 'none';
     console.log('user is logged out');
     // user is logged out
   }
@@ -111,8 +103,8 @@ function login(username, password){
       errorMsg = "We're not really sure what happened.";
       break;
     }
-        $error.text(errorMsg);
-        $error.stop().show().fadeOut(4000);
+        error.innerHTML = errorMsg;
+        error.display = 'block';
   }
 
 function pullData(){
@@ -129,15 +121,15 @@ function pullData(){
     });
 }
 
-$('body').on('click', '.login-button',function(){
-  var username = $user.val()
-    ,password = $pass.val()
+loginButton.onclick = function(){
+  var username = user.val()
+    ,password = pass.val()
     ,that = this.id;
 
     if (that === 'login-submit') login(username, password);
     else if (that === 'register-submit') register(username, password);
     else if (that === 'logout') authClient.logout();
 
-});
-
+}
+}
 // })();
