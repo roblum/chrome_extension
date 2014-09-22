@@ -1,14 +1,28 @@
-var clipApp = angular.module('clipApp', ['ngAnimate']);
+var clipApp = angular.module('clipApp', ['firebase']);
 
-clipApp.controller('mainDirectory', ['$scope', function($scope){
+clipApp.controller('mainDirectory', function($scope, $firebase){
 
-	$scope.snippets = [
-		{
-			"one" : "one"
-		},{
-			"eno" : "eno"
-		}
-	];
+    var ref = new Firebase("https://clipboard-list.firebaseio.com/snippets");
+
+    // create an AngularFire reference to the data
+    var sync = $firebase(ref);
+
+    // download the data into a local object
+    $scope.snippets = sync.$asArray();
+
+    $scope.addSnippet = function(text){
+    	console.log('snippet ran');
+    	$scope.snippets.$add({text: text});
+    }
+
+	// ==============================
+	// $scope.snippets = [
+	// 	{
+	// 		"one" : "one"
+	// 	},{
+	// 		"eno" : "eno"
+	// 	}
+	// ];
 
 	$scope.button = function($index){
 		var current = $index
@@ -29,4 +43,28 @@ clipApp.controller('mainDirectory', ['$scope', function($scope){
 		this.hover = false;
 	}
 
-}]);
+});
+
+
+// clipApp.controller("MyAuthCtrl", ["$scope", "$firebaseSimpleLogin",
+	
+// 	function($scope, $firebaseSimpleLogin) {
+// 	    var dataRef = new Firebase("https://clipboard-list.firebaseio.com");
+// 	    $scope.loginObj = $firebaseSimpleLogin(dataRef);
+// 	    console.log('simple login angular fire ran');
+// 	    console.log($scope.loginObj);
+
+// 	      	$scope.loginObj.$login("password", {
+// 			   email: "asdf@asdf.asdf",
+// 			   password: "asdf"
+// 			}).then(function(user) {
+// 			   console.log("Logged in as: ", user.uid);
+// 			}, function(error) {
+// 			   console.error("Login failed: ", error);
+// 			});
+
+// 			$rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+// 		  		console.log("User " + user.id + " successfully logged in!");
+// 			});
+// 	}
+// ]);
