@@ -8,9 +8,9 @@ body{
 div{
     overflow:auto;
 }
-#copy-list-container{
+/*#copy-list-container{
     display:none;
-}
+}*/
 .input-container{
     width: 200px;
     height: 35px;
