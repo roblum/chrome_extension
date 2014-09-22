@@ -3,8 +3,6 @@
 
 // (function(){ // keep all variables public for testing
 
-window.onload = function(){
-
 var error = document.getElementById('error-message')
     ,loginContainer = document.getElementById('login-container')
     ,loginButtonContainer = document.getElementById('login-button-container')
@@ -12,8 +10,10 @@ var error = document.getElementById('error-message')
     ,pass = document.getElementById('password')
     ,loginButton = document.getElementsByClassName('login-button')
     ,copyListContainer = document.getElementById('copy-list-container')
-    ,loginInput = document.querySelector('#login-container input')
+    ,loginInput = document.querySelectorAll('#login-container input')
     ,myRef = new Firebase("https://clipboard-list.firebaseio.com");
+
+    console.log(loginInput);
 
 var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
   console.log('user');
@@ -29,10 +29,11 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
     // user authenticated with Firebase
     console.log("User ID: " + user.uid + ", Provider: " + user.provider);
     
-    loginContainer.display = 'none';
-    copyListContainer.display = 'block';
+    loginContainer.style.display = 'none';
+    copyListContainer.style.display = 'block';
     
-    loginInput.value = '';
+    loginInput[0].value = '';
+    loginInput[1].value = '';
     // if( isNewUser ) {
     //   // save new user's profile into Firebase so we can
     //   // list users, use them in security rules, and show profiles
@@ -43,9 +44,9 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
     //   });
     // }
   } else {
-    loginContainer.display = 'block';
-    loginButtonContainer.display = 'block';
-    copyListContainer.display = 'none';
+    loginContainer.style.display = 'block';
+    loginButtonContainer.style.display = 'block';
+    copyListContainer.style.display = 'none';
     console.log('user is logged out');
     // user is logged out
   }
@@ -54,7 +55,7 @@ var authClient = new FirebaseSimpleLogin(myRef, function(error, user){
 function authentication(){
 var authRef = new Firebase("https://clipboard-list.firebaseio.com/.info/authenticated");
      authRef.on("value", function(snap) {
-        if (snap.val() === true) {
+        if (snap.value === true) {
           console.log("authenticated");
           pullData();
         } else {
@@ -87,9 +88,9 @@ function login(username, password){
 }
 
 // compares against error codes to display errors
-  function displayError(error) {
+  function displayError(err) {
     var errorMsg = '';
-    switch (error.code) {
+    switch (err.code) {
     case "INVALID_EMAIL":
       errorMsg = "You entered an invalid email";
       break;
@@ -104,32 +105,34 @@ function login(username, password){
       break;
     }
         error.innerHTML = errorMsg;
-        error.display = 'block';
+        error.style.display = 'block';
   }
 
 function pullData(){
   console.log('pullData() ran');
     myRef.on('value', function(ss){
        console.log('these are all the values');
-       console.log(ss.val());
-       var allData = ss.val();
+       console.log(ss.value);
+       var allData = ss.value;
     });
 
     myRef.on('child_changed', function(ss){
        console.log('child changed:');
-       console.log(ss.val());
+       console.log(ss.value);
     });
 }
 
-loginButton.onclick = function(){
-  var username = user.val()
-    ,password = pass.val()
-    ,that = this.id;
+for (var i=0; i<loginButton.length; i++){
+  loginButton[i].onclick = function(){
+    var username = user.value
+      ,password = pass.value
+      ,that = this.id;
 
-    if (that === 'login-submit') login(username, password);
-    else if (that === 'register-submit') register(username, password);
-    else if (that === 'logout') authClient.logout();
+      if (that === 'login-submit') login(username, password);
+      else if (that === 'register-submit') register(username, password);
+      else if (that === 'logout') authClient.logout();
 
+  }
 }
-}
+
 // })();
