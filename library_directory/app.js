@@ -15,6 +15,9 @@ libApp.controller('mainDirectory', ['$scope', function($scope){
 		},{
 			name : 'requests'
 			,pre : 'https://offerpop.wufoo.com/forms/offerpop-request-form/'
+		},{
+			name : 'beta sign up'
+			,pre : 'https://builder.offerpop.com/builders/signup'
 		}
 	];
 
