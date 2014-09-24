@@ -1,8 +1,8 @@
-var clipApp = angular.module('clipApp', ['ngAnimate', 'firebase']);
+var bugApp = angular.module('bugApp', ['ngAnimate', 'firebase']);
 
-clipApp.controller('mainDirectory', function($scope, $firebase){
+bugApp.controller('mainDirectory', function($scope, $firebase){
 
-    var ref = new Firebase("https://clipboard-list.firebaseio.com/snippets");
+    var ref = new Firebase("https://bug-tracker.firebaseio.com/snippets");
 
     // create an AngularFire reference to the data
     var sync = $firebase(ref);
@@ -37,8 +37,8 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 });
 
 
-// clipApp.controller("MyAuthCtrl", ["$scope", "$firebaseSimpleLogin",
-	
+// bugApp.controller("MyAuthCtrl", ["$scope", "$firebaseSimpleLogin",
+
 // 	function($scope, $firebaseSimpleLogin) {
 // 	    var dataRef = new Firebase("https://clipboard-list.firebaseio.com");
 // 	    $scope.loginObj = $firebaseSimpleLogin(dataRef);

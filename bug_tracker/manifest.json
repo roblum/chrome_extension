@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Clipboard-List",
-  "description": "Clipboard",
+  "name": "Bug-Tracker",
+  "description": "BugTracker",
   "version": "1.0",
   "browser_action": {
     // "default_icon": "icon.png",
