@@ -1,0 +1,123 @@
+/* GENERAL CSS */
+body{
+    width:200px;    
+}
+::selection {
+    background: orange;
+}
+div{
+    overflow:auto;
+}
+/*#copy-list-container{
+    display:none;
+}*/
+.input-container{
+    width: 200px;
+    height: 35px;
+    margin-top:5%;
+}
+.input-container:first-child{
+    margin-top:0;
+}
+.snippet-container{
+    width: 250px;
+}
+input {
+    background: gray;
+    border: 0px;
+    padding: 5px 10px;
+    height: 25px;
+    outline: none;
+    color: #fff;
+    float: left;
+    width:180px;
+    font-family: 'Lato', sans-serif;
+    font-weight:300;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+}
+
+/* LOGIN CSS */
+#password-container{
+    margin-top:5%;
+}
+div#error-message {
+    color: red;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    text-align: center;
+    padding: 2px;
+}
+div#login-button-container{
+    float:left;
+    display:none;
+    width:100%;
+}
+.login-button{
+    font-family: 'Lato', sans-serif;
+    float: left;
+    color: white;
+    background: #0D98BA;
+    padding: 5px 5px;
+    border-radius:5px;
+    cursor:pointer;
+    opacity:0.9;
+    border: none;
+    font-weight:300;
+    outline: none;
+    width:40%;
+    margin:5% 5% 0 5%;
+}
+
+/* CLIPBOARD CSS */
+div.copy-button {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    left: -50px;
+    top: 5px;
+    float: left;
+    color: white;
+    background: #0D98BA;
+    padding: 1px 5px 5px;
+    border-radius:5px;
+    cursor:pointer;
+    opacity:0.9;
+    font-weight:300;
+}
+/*
+ * ngRepeat triggers three animation events: enter, leave and move.
+ */
+div.copy-button.ng-enter,
+div.copy-button.ng-leave,
+div.copy-button.ng-move {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+/* ending enter and move styling
+   (this is what the element will animate from */
+div.copy-button.ng-enter,
+div.copy-button.ng-move { 
+    opacity:0; 
+}
+
+/* ending enter and move styling
+   (this is what the element will animate towards */
+div.copy-button.ng-enter.ng-enter-active,
+div.copy-button.ng-move.ng-move-active { 
+    opacity:1; 
+}
+
+/* starting leave animation */
+div.copy-button.ng-leave { 
+    opacity:1; 
+}
+
+/* ending leave animation */
+div.copy-button.ng-leave.ng-leave-active { 
+    opacity:0; 
+}
+
+#logout{
+    float:right;
+}
