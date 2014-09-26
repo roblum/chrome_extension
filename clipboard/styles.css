@@ -1,6 +1,6 @@
 /* GENERAL CSS */
 body{
-    width:200px;    
+    width:200px;
 }
 ::selection {
     background: orange;
@@ -97,25 +97,25 @@ div.copy-button.ng-move {
 /* ending enter and move styling
    (this is what the element will animate from */
 div.copy-button.ng-enter,
-div.copy-button.ng-move { 
-    opacity:0; 
+div.copy-button.ng-move {
+    opacity:0;
 }
 
 /* ending enter and move styling
    (this is what the element will animate towards */
 div.copy-button.ng-enter.ng-enter-active,
-div.copy-button.ng-move.ng-move-active { 
-    opacity:1; 
+div.copy-button.ng-move.ng-move-active {
+    opacity:1;
 }
 
 /* starting leave animation */
-div.copy-button.ng-leave { 
-    opacity:1; 
+div.copy-button.ng-leave {
+    opacity:1;
 }
 
 /* ending leave animation */
-div.copy-button.ng-leave.ng-leave-active { 
-    opacity:0; 
+div.copy-button.ng-leave.ng-leave-active {
+    opacity:0;
 }
 
 #logout{
