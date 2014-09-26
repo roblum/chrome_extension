@@ -7,35 +7,30 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
-
-<div id="test-login" ng-controller="MainCtrl">
-    <button ng-click="dummySignin()">LOG ME IN</button>
-</div>
-
+<body ng-controller="mainDirectory">
 
     <div id="login-container">
 
         <div id="username-container" class="input-container">
-            <input id="username" type="text" />
+            <input id="username" type="text" ng-model="user.name"/>
         </div>
 
         <div id="password-container" class="input-container">
-            <input id="password" type="password" />
+            <input id="password" type="password" ng-model="user.pass"/>
         </div>
 
         <div id="login-button-container">
             <button id="register-submit" class="login-button">Register</button>
-            <button id="login-submit" class="login-button">Login</button>
+            <button id="login-submit" class="login-button" ng-click="checkCredentials(user)">Login</button>
         </div>
 
         <div id="error-message"></div>
 
     </div>
 
-    <div id="copy-list-container">
+    <!-- <div id="copy-list-container">
 
-        <div ng-controller="mainDirectory">
+        <div>
 
             <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="snippet in snippets" ng-mouseover="show()" ng-mouseleave="hide()">
                 <input type="text" ng-model="snippet.text" ng-change="snippets.$save(snippet)">
@@ -43,7 +38,7 @@
             </div>
 
             <div id="logout-container">
-                <button id="logout" class="login-button">Logout</button>
+                <button id="logout" class="login-button" ng-click="loginObj.$logout()">Logout</button>
             </div>
 
                 <form ng-submit="addSnippet(newSnippetText)">
@@ -51,7 +46,7 @@
                     <button type="submit">add message</button>
                 </form>
 
-        </div>
+        </div> -->
 
     </div>
     <script src="js/angular.js"></script>
