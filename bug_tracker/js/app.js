@@ -1,11 +1,9 @@
 var bugApp = angular.module('bugApp', ['ngAnimate', 'firebase']);
 
-
-bugApp.controller('mainDirectory', ["$scope", "$firebaseSimpleLogin", function($scope, $firebaseSimpleLogin){
+bugApp.controller('loginDirectory', ["$scope", "$firebaseSimpleLogin", function($scope, $firebaseSimpleLogin){
 
      var dataRef = new Firebase("https://bug-tracker.firebaseio.com/");
      $scope.loginObj = $firebaseSimpleLogin(dataRef);
-     console.log('initiated controller');
 
 
      $scope.loginObj.$getCurrentUser()
@@ -20,37 +18,35 @@ bugApp.controller('mainDirectory', ["$scope", "$firebaseSimpleLogin", function($
           });
 
      $scope.checkCredentials = function(user){
-          // $scope.logins = angular.copy($scope.user);
-
           console.log('running credentials');
           $scope.loginObj.$login("password", {
                email: user.name,
                password: user.pass
           }).then(function(user) {
                console.log("Logged in as: ", user.uid);
-               console.log("Logged in as: " + user.id + ' ' + user);
+               console.log("Logged in as: ", user.id);
+               console.log($firebaseSimpleLogin)
           }, function(error) {
                console.error("Login failed: ", error);
           });
 
      }
 
-     // $scope.logout = function(){
-     //      $scope.auth.$logout();
-     //      $scope.authFlag = false;
-     // };
+     $scope.logout = function(){
+          $scope.loginObj.$logout();
+          $scope.authFlag = false;
+     };
 
 
-          // $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
-          //   console.log("User " + user.id + " successfully logged in!");
-          // });
+}]);
 
+bugApp.controller('contentDirectory', ["$scope", "$firebaseSimpleLogin", function($scope, $firebaseSimpleLogin, $rootScope){
 
+     // $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+     //      console.log('contentDirectory Controller');
+     //      console.log("User " + user.id + " successfully logged in!");
+     // });
 
-
-     /***********************************/
-     /***********************************/
-     /***********************************/
 	$scope.button = function($index){
 		var current = $index
 	    	,area = document.querySelector('#snippet-container-' + current + ' input');
