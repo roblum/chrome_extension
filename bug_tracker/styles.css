@@ -68,6 +68,9 @@ div#login-button-container{
     width:40%;
     margin:5% 5% 0 5%;
 }
+#logout-container{
+    clear:both;
+}
 
 /* CLIPBOARD CSS */
 div.copy-button {
