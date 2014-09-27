@@ -1,6 +1,23 @@
 var bugApp = angular.module('bugApp', ['ngAnimate', 'firebase']);
 
-bugApp.controller('loginDirectory', ["$scope", "$firebaseSimpleLogin", function($scope, $firebaseSimpleLogin){
+bugApp.factory('authHandler', function($rootScope) {
+    var sharedObj = {};
+    
+    sharedObj.message = '';
+
+    sharedObj.prepForBroadcast = function(msg) {
+        this.message = msg;
+        this.broadcastItem();
+    };
+
+    sharedObj.broadcastItem = function() {
+        $rootScope.$broadcast('notifyData');
+    };
+
+    return sharedObj;
+});
+
+bugApp.controller('loginDirectory', ["$scope", "$firebaseSimpleLogin", 'authHandler', function($scope, $firebaseSimpleLogin, authHandler){
 
      var dataRef = new Firebase("https://bug-tracker.firebaseio.com/");
      $scope.loginObj = $firebaseSimpleLogin(dataRef);
@@ -25,7 +42,10 @@ bugApp.controller('loginDirectory', ["$scope", "$firebaseSimpleLogin", function(
           }).then(function(user) {
                console.log("Logged in as: ", user.uid);
                console.log("Logged in as: ", user.id);
-               console.log($firebaseSimpleLogin)
+               console.log(user);
+
+               authHandler.prepForBroadcast();
+
           }, function(error) {
                console.error("Login failed: ", error);
           });
@@ -33,6 +53,7 @@ bugApp.controller('loginDirectory', ["$scope", "$firebaseSimpleLogin", function(
      }
 
      $scope.logout = function(){
+          console.log('logout');
           $scope.loginObj.$logout();
           $scope.authFlag = false;
      };
@@ -40,12 +61,12 @@ bugApp.controller('loginDirectory', ["$scope", "$firebaseSimpleLogin", function(
 
 }]);
 
-bugApp.controller('contentDirectory', ["$scope", "$firebaseSimpleLogin", function($scope, $firebaseSimpleLogin, $rootScope){
+bugApp.controller('contentDirectory', ["$scope", "$firebaseSimpleLogin", function($scope, $firebaseSimpleLogin, authHandler){
 
-     // $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
-     //      console.log('contentDirectory Controller');
-     //      console.log("User " + user.id + " successfully logged in!");
-     // });
+     $scope.$on('notifyData', function() {
+          console.log('contentDirectory Controller');
+          // console.log("User " + user.id + " successfully logged in!");
+     });
 
 	$scope.button = function($index){
 		var current = $index
@@ -67,3 +88,5 @@ bugApp.controller('contentDirectory', ["$scope", "$firebaseSimpleLogin", functio
 	}
 
 }]);
+
+// loginDirectory.$inject = ['$scope', 'authHandler'];
