@@ -1,6 +1,6 @@
 /* GENERAL CSS */
 body{
-    width:300px;
+    width:250px;
 }
 ::selection {
     background: orange;
@@ -8,9 +8,10 @@ body{
 div{
     overflow:auto;
 }
-/*#copy-list-container{
-    display:none;
-}*/
+.overflow-container{
+    width:400px;
+    overflow-x:hidden;
+}
 .input-container{
     width: 200px;
     height: 35px;
@@ -20,8 +21,9 @@ div{
     margin-top:0;
 }
 .snippet-container{
-    width: 300px;
+    width: 100%;
     position:relative;
+    overflow: hidden;
 }
 input {
     background: gray;
@@ -31,7 +33,7 @@ input {
     outline: none;
     color: #fff;
     float: left;
-    width:180px;
+    width:230px;
     font-family: 'Lato', sans-serif;
     font-weight:300;
     font-size: 15px;
@@ -71,11 +73,11 @@ form button{
 .hover-container {
     position: relative;
     top: 5px;
-    left: -60px;
+    left: -120px;
     float: left;
-    width:80px;
+    width:120px;
 }
-div.copy-button {
+div.copy-button, div.edit-button {
     font-family: 'Lato', sans-serif;
     float: left;
     color: white;
@@ -85,6 +87,7 @@ div.copy-button {
     cursor:pointer;
     opacity:0.9;
     font-weight:300;
+    margin-left:5px;
 }
 
 div.hover-container.ng-enter,
@@ -117,42 +120,3 @@ div.hover-container.ng-leave {
 div.hover-container.ng-leave.ng-leave-active {
     opacity:0;
 }
-
-
-
-/* LOGIN CSS 
-#password-container{
-    margin-top:5%;
-}
-div#error-message {
-    color: red;
-    font-family: 'Lato', sans-serif;
-    font-size: 11px;
-    text-align: center;
-    padding: 2px;
-}
-div#login-button-container{
-    float:left;
-    display:none;
-    width:100%;
-}
-.login-button{
-    font-family: 'Lato', sans-serif;
-    float: left;
-    color: white;
-    background: #0D98BA;
-    padding: 5px 5px;
-    border-radius:5px;
-    cursor:pointer;
-    opacity:0.9;
-    border: none;
-    font-weight:300;
-    outline: none;
-    width:40%;
-    margin:5% 5% 0 5%;
-}
-#logout{
-    float:right;
-}
-*/
-
