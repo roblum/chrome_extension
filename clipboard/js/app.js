@@ -15,14 +15,19 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 		    	$scope.snippets.$add({text: text});
 		    }
 
+	$scope.edit = function($index){
+		var current = document.querySelector('#snippet-container-' + $index + ' input');
+		current.removeAttribute('disabled');
+	}
 
 	$scope.button = function($index){
 		var current = $index
 	    	,area = document.querySelector('#snippet-container-' + current + ' input');
 
-		    area.focus();
-		    document.execCommand('SelectAll');
-		    document.execCommand("Copy", false, null);
+	    		area.removeAttribute('disabled');
+		    	area.focus();
+		    	document.execCommand('SelectAll');
+		    	document.execCommand("Copy", false, null);
 	}
 
 	$scope.hover = false;
