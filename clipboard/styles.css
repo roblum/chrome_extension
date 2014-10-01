@@ -37,36 +37,24 @@ input {
     letter-spacing: 0.4px;
 }
 
-/* LOGIN CSS */
-#password-container{
+/* FORM CSS */
+form{
     margin-top:5%;
 }
-div#error-message {
-    color: red;
-    font-family: 'Lato', sans-serif;
-    font-size: 11px;
-    text-align: center;
-    padding: 2px;
-}
-div#login-button-container{
-    float:left;
-    display:none;
-    width:100%;
-}
-.login-button{
+form button{
     font-family: 'Lato', sans-serif;
     float: left;
     color: white;
     background: #0D98BA;
-    padding: 5px 5px;
+    padding: 5px 10px;
     border-radius:5px;
     cursor:pointer;
-    opacity:0.9;
-    border: none;
     font-weight:300;
-    outline: none;
-    width:40%;
-    margin:5% 5% 0 5%;
+    outline:none;
+    border:0px;
+    font-size:15px;
+    margin:0;
+    margin-top:5%;
 }
 
 /* CLIPBOARD CSS */
@@ -118,6 +106,40 @@ div.copy-button.ng-leave.ng-leave-active {
     opacity:0;
 }
 
+
+/* LOGIN CSS 
+#password-container{
+    margin-top:5%;
+}
+div#error-message {
+    color: red;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    text-align: center;
+    padding: 2px;
+}
+div#login-button-container{
+    float:left;
+    display:none;
+    width:100%;
+}
+.login-button{
+    font-family: 'Lato', sans-serif;
+    float: left;
+    color: white;
+    background: #0D98BA;
+    padding: 5px 5px;
+    border-radius:5px;
+    cursor:pointer;
+    opacity:0.9;
+    border: none;
+    font-weight:300;
+    outline: none;
+    width:40%;
+    margin:5% 5% 0 5%;
+}
 #logout{
     float:right;
 }
+*/
+
