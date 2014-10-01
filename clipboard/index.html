@@ -15,8 +15,10 @@
 
             <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="(id, snippet) in snippets" ng-mouseover="show()" ng-mouseleave="hide()">
                 <input type="text" ng-model="snippet.text" ng-change="snippets.$save(snippet)">
-                <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)" ng-if="hover">copy</div>
-                <button ng-click="snippets.$remove(id)">Remove</button>
+                <div class="hover-container" ng-if="hover">
+                    <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)">copy</div>
+                    <button ng-dblclick="snippets.$remove(id)" class="remove">X</button>
+                </div>
             </div>
 
                 <form ng-submit="addSnippet(newSnippetText)">

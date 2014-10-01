@@ -1,6 +1,6 @@
 /* GENERAL CSS */
 body{
-    width:200px;
+    width:300px;
 }
 ::selection {
     background: orange;
@@ -20,7 +20,8 @@ div{
     margin-top:0;
 }
 .snippet-container{
-    width: 250px;
+    width: 300px;
+    position:relative;
 }
 input {
     background: gray;
@@ -35,6 +36,15 @@ input {
     font-weight:300;
     font-size: 15px;
     letter-spacing: 0.4px;
+}
+.remove{
+    background: orange;
+    border: 0px;
+    color: white;
+    border-radius: 100px;
+    position: absolute;
+    top: 2px;
+    margin-left: 5px;
 }
 
 /* FORM CSS */
@@ -58,11 +68,15 @@ form button{
 }
 
 /* CLIPBOARD CSS */
+.hover-container {
+    position: relative;
+    top: 5px;
+    left: -60px;
+    float: left;
+    width:80px;
+}
 div.copy-button {
     font-family: 'Lato', sans-serif;
-    position: relative;
-    left: -50px;
-    top: 5px;
     float: left;
     color: white;
     background: #0D98BA;
@@ -72,39 +86,38 @@ div.copy-button {
     opacity:0.9;
     font-weight:300;
 }
-/*
- * ngRepeat triggers three animation events: enter, leave and move.
- */
-div.copy-button.ng-enter,
-div.copy-button.ng-leave,
-div.copy-button.ng-move {
+
+div.hover-container.ng-enter,
+div.hover-container.ng-leave,
+div.hover-container.ng-move {
   -webkit-transition:0.5s linear all;
   transition:0.5s linear all;
 }
 
 /* ending enter and move styling
    (this is what the element will animate from */
-div.copy-button.ng-enter,
-div.copy-button.ng-move {
+div.hover-container.ng-enter,
+div.hover-container.ng-move {
     opacity:0;
 }
 
 /* ending enter and move styling
    (this is what the element will animate towards */
-div.copy-button.ng-enter.ng-enter-active,
-div.copy-button.ng-move.ng-move-active {
+div.hover-container.ng-enter.ng-enter-active,
+div.hover-container.ng-move.ng-move-active {
     opacity:1;
 }
 
 /* starting leave animation */
-div.copy-button.ng-leave {
+div.hover-container.ng-leave {
     opacity:1;
 }
 
 /* ending leave animation */
-div.copy-button.ng-leave.ng-leave-active {
+div.hover-container.ng-leave.ng-leave-active {
     opacity:0;
 }
+
 
 
 /* LOGIN CSS 
