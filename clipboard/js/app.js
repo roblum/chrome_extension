@@ -11,9 +11,9 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 		    $scope.snippets = sync.$asArray();
 
 		    $scope.addSnippet = function(text){
-		    	console.log('snippet ran');
-		    	$scope.snippets.$add({text: text});
-		    	document.querySelector('form input').value = '';
+			    	console.log('snippet ran');
+			    	$scope.snippets.$add({text: text});
+			    	document.querySelector('form input').value = '';
 		    }
 
 	$scope.edit = function($index){
@@ -29,6 +29,7 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 		    	area.focus();
 		    	document.execCommand('SelectAll');
 		    	document.execCommand("Copy", false, null);
+		    	area.setAttribute('disabled', 'disabled');
 	}
 
 	$scope.hover = false;
