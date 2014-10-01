@@ -13,6 +13,7 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 		    $scope.addSnippet = function(text){
 		    	console.log('snippet ran');
 		    	$scope.snippets.$add({text: text});
+		    	document.querySelector('form input').value = '';
 		    }
 
 	$scope.edit = function($index){
