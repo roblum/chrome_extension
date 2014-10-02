@@ -11,11 +11,15 @@
 
     <div id="copy-list-container">
 
-        <div ng-controller="mainDirectory">
+        <div ng-controller="mainDirectory" class="overflow-hidden">
 
-            <select ng-model="currentDir" ng-options="k as k.$id for k in rootItems" class="select">
-                <option></option>
-            </select>
+            <div id="directory-container">
+                <select ng-model="currentDir" ng-options="k as k.$id for k in rootItems" class="select">
+                    <option></option>
+                </select>
+
+                <div id="add-directory" ng-click="createDirectory()">+</div>
+            </div>
 
             <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="(id, snippet) in snippets" ng-mouseover="show()" ng-mouseleave="hide()">
                 <div class="overflow-container">
