@@ -45,6 +45,11 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 		    	area.setAttribute('disabled', 'disabled');
 	}
 
+  $scope.disable = function($index){
+      document.querySelector('#snippet-container-' + $index + ' input')
+          .setAttribute('disabled','disabled');
+  }
+
 	$scope.hover = false;
 
 	$scope.show = function(){
