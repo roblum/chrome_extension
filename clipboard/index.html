@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-                <form ng-submit="addSnippet(newSnippetText)">
+                <form ng-submit="addSnippet(newSnippetText)" ng-if="currentDir">
                     <input ng-model="newSnippetText" />
                     <button type="submit">add message</button>
                 </form>
