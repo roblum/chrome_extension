@@ -2,13 +2,26 @@ var clipApp = angular.module('clipApp', ['ngAnimate', 'firebase']);
 
 clipApp.controller('mainDirectory', function($scope, $firebase){
 
-      	var ref = new Firebase("https://clipboard-list.firebaseio.com/snippets");
+    $scope.navigation = [
+        {
+            name : 'Bitly-Links'
+        },
+        {
+            name : 'snippets'
+        }
+    ]
 
-		    // create an AngularFire reference to the data
-	    	var sync = $firebase(ref);
+    $scope.$watch('currentDir', function(value){
+        if (value){
+            var ref = new Firebase("https://clipboard-list.firebaseio.com/" + value.name);
 
-		    // download the data into a local object
-		    $scope.snippets = sync.$asArray();
+            // create an AngularFire reference to the data
+            var sync = $firebase(ref);
+
+            // download the data into a local object
+            $scope.snippets = sync.$asArray();
+        }
+    });
 
 		    $scope.addSnippet = function(text){
 			    	console.log('snippet ran');
