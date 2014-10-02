@@ -38,6 +38,12 @@ clipApp.controller('mainDirectory', function($scope, $firebase){
 		    	document.execCommand('SelectAll');
 		    	document.execCommand("Copy", false, null);
 		    	area.setAttribute('disabled', 'disabled');
+
+               var currDir = $scope.currentDir.$id;
+
+               if (area.value.indexOf('http') === 0){ //!(currDir.indexOf('Links') === -1) &&
+                    chrome.tabs.create({url: area.value});
+               }
 	}
 
   $scope.disable = function($index){
