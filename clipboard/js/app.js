@@ -1,15 +1,16 @@
 var clipApp = angular.module('clipApp', ['ngAnimate', 'firebase']);
 
 clipApp.controller('mainDirectory', function($scope, $firebase){
+     var directory = 'https://clipboard-list.firebaseio.com/';
 
-     var rootRef = new Firebase('https://clipboard-list.firebaseio.com/')
+     var rootRef = new Firebase(directory)
           ,rootSync = $firebase(rootRef);
 
      $scope.rootItems = rootSync.$asArray();
 
      $scope.$watch('currentDir', function(value){
           if (value){
-               var ref = new Firebase("https://clipboard-list.firebaseio.com/" + value.$id)
+               var ref = new Firebase(directory + value.$id)
                     ,sync = $firebase(ref); // create an AngularFire reference to the data
 
                // download the data into a local object
