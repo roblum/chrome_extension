@@ -13,6 +13,10 @@
 
         <div ng-controller="mainDirectory">
 
+            <select ng-model="currentDir" ng-options="nav.name for nav in navigation" class="select">
+                <option></option>
+            </select>
+
             <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="(id, snippet) in snippets" ng-mouseover="show()" ng-mouseleave="hide()">
                 <div class="overflow-container">
                     <input type="text" ng-model="snippet.text" ng-change="snippets.$save(snippet)" disabled>
