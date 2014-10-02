@@ -13,7 +13,7 @@
 
         <div ng-controller="mainDirectory">
 
-            <select ng-model="currentDir" ng-options="nav.name for nav in navigation" class="select">
+            <select ng-model="currentDir" ng-options="k as k.$id for k in rootItems" class="select">
                 <option></option>
             </select>
 
