@@ -16,7 +16,7 @@ module.exports = function (grunt) {
               ,tasks: ['uglify:dist']
             }
             ,css : {
-              files: ['styles.styl']
+              files: ['css/styles.styl']
               ,tasks: ['stylus']
             }
         },stylus: {
@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                     ,lineos: false
                 }
                 ,files: {
-                  'styles.css': 'styles.styl'
+                  'css/styles.css': 'css/styles.styl'
                 }
             }
         }
