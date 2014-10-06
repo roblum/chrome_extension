@@ -1,4 +1,4 @@
-#Professional Services Clipboard
+#Firebase Clipboard
 
 Version 1.0
 -----
