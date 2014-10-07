@@ -10,14 +10,14 @@ angular.module('clipApp.services', [])
 
     return fireData;
   })
-  .factory('infoService', function(dataService, FIREBASE_URL) {
+  .factory('infoService', function(dataService, $firebase, FIREBASE_URL) {
 
     var infoServiceObject = {
         firstPull : function(){
           return dataService.$asArray();
         },
         directoryPull : function(value){
-          var ref = new Firebase(FIREBASE_URL + value.dir)
+          var ref = new Firebase(FIREBASE_URL + value)
               ,sync = $firebase(ref); // create an AngularFire reference to the data
 
               // download the data into a local object
