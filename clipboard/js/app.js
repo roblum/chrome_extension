@@ -3,8 +3,8 @@
 angular.module('clipApp', [
   'ngRoute',
   'ngAnimate',
-  'myApp.services',
-  'myApp.controllers',
+  'clipApp.services',
+  'clipApp.controllers',
   'firebase'
 ]).
 config(['$routeProvider', function($routeProvider) {
