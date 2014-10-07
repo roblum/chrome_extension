@@ -15,8 +15,6 @@ angular.module('clipApp.controllers', [])
       };
     });
 
-    // $scope.currentDirectory = {dir : ''};
-
     $scope.getNewData = function(){
       $scope.snippets = infoService.directoryPull($scope.currentDir.$id);
     }
@@ -32,7 +30,7 @@ angular.module('clipApp.controllers', [])
       current.removeAttribute('disabled');
     }
 
-    $scope.button = function($index){
+    $scope.copy = function($index){
       var current = $index
           ,area = document.querySelector('#snippet-container-' + current + ' input');
 
