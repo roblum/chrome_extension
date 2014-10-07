@@ -11,7 +11,7 @@ angular.module('clipApp.controllers', [])
     // Bind user's parties to $scope.parties.
     authService.getCurrentUser().then(function(user) {
       if (user) {
-        $scope.info = infoService.firstPull();
+        $scope.rootItems = infoService.firstPull();
       };
     });
 
