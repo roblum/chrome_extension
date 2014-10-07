@@ -28,7 +28,7 @@ angular.module('clipApp.services', [])
 
     return infoServiceObject;
   })
-  .factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService) {
+  .factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL) {
     var authRef = new Firebase(FIREBASE_URL);
     var auth = $firebaseSimpleLogin(authRef);
 
@@ -36,7 +36,7 @@ angular.module('clipApp.services', [])
         login: function(user, optionalCallback) {
           auth.$login('password', user).then(function(data) {
             console.log(data);
-            optionalCallback();
+            // optionalCallback();
             $location.path('/info');
           });
         },
