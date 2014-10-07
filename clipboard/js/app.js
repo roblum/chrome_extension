@@ -8,11 +8,7 @@ angular.module('clipApp', [
   'firebase'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
-    templateUrl: 'partials/home.html',
-    controller: 'HomeController'
-  })
-  .when('/login', {
+  $routeProvider.when('/login', {
     templateUrl: 'partials/login.html',
     controller: 'AuthController'
   })
