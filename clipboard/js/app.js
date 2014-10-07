@@ -11,14 +11,14 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
     templateUrl: 'partials/home.html',
     controller: 'HomeController'
-  });
-  $routeProvider.when('/login', {
+  })
+  .when('/login', {
     templateUrl: 'partials/login.html',
     controller: 'AuthController'
-  });
-  $routeProvider.when('/info', {
+  })
+  .when('/info', {
     templateUrl: 'partials/info.html',
     controller: 'InfoController'
-  });
-  $routeProvider.otherwise({redirectTo: '/'});
+  })
+  .otherwise({redirectTo: '/'});
 }]);
