@@ -15,10 +15,10 @@ angular.module('clipApp.controllers', [])
       };
     });
 
-    $scope.currentDirectory = {dir : ''};
+    // $scope.currentDirectory = {dir : ''};
 
     $scope.getNewData = function(){
-      infoService.directoryPull($scope.currentDirectory);
+      $scope.snippets = infoService.directoryPull($scope.currentDir.$id);
     }
 
     $scope.addSnippet = function(text){
