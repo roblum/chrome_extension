@@ -9,37 +9,11 @@
 
 <body>
 
-    <div id="copy-list-container">
 
-        <div ng-controller="mainDirectory" class="overflow-hidden">
+            <a href="#/login" ng-hide="currentUser">Log in</a>
+            <a href="" ng-click="logout()" ng-show="currentUser">Log out</a>
 
-            <div id="directory-container">
-                <select ng-model="currentDir" ng-options="k as k.$id for k in rootItems" class="select">
-                    <option></option>
-                </select>
 
-                <div id="add-directory" ng-click="createDirectory()">+</div>
-            </div>
-
-            <div id="snippet-container-{{$index}}" class="snippet-container input-container" ng-repeat="(id, snippet) in snippets" ng-mouseover="show()" ng-mouseleave="hide()">
-                <div class="overflow-container">
-                    <input type="text" ng-model="snippet.text" ng-change="snippets.$save(snippet)" disabled ng-blur="disable($index)">
-                    <div class="hover-container" ng-if="hover">
-                        <div class="edit-button" id="edit-{{$index}}" ng-click="edit($index)">edit</div>
-                        <div class="copy-button" id="copy-{{$index}}" ng-click="button($index)">copy</div>
-                        <button ng-dblclick="snippets.$remove(id)" class="remove">X</button>
-                    </div>
-                </div>
-            </div>
-
-                <form ng-submit="addSnippet(newSnippetText)" ng-if="currentDir">
-                    <input ng-model="newSnippetText" />
-                    <button type="submit">add message</button>
-                </form>
-
-        </div>
-
-    </div>
     <script src="lib/angular.js"></script>
     <script src="lib/ng_animate.js"></script>
     <script src="lib/ng_route.js"></script>
