@@ -21,10 +21,10 @@ angular.module('clipApp.services', [])
               ,sync = $firebase(ref); // create an AngularFire reference to the data
 
               // download the data into a local object
+              console.log(sync.$asArray());
               return sync.$asArray();
-        }
-      }
-  };
+        },
+      };
 
     return infoServiceObject;
   })
@@ -33,20 +33,20 @@ angular.module('clipApp.services', [])
     var auth = $firebaseSimpleLogin(authRef);
 
     var authServiceObject = {
-      login: function(user, optionalCallback) {
-        auth.$login('password', user).then(function(data) {
-          console.log(data);
-          optionalCallback();
-          $location.path('/info');
-        });
-      },
-      logout: function() {
-        auth.$logout();
-        $location.path('/');
-      },
-      getCurrentUser: function() {
-        return auth.$getCurrentUser();
-      }
+        login: function(user, optionalCallback) {
+          auth.$login('password', user).then(function(data) {
+            console.log(data);
+            optionalCallback();
+            $location.path('/info');
+          });
+        },
+        logout: function() {
+          auth.$logout();
+          $location.path('/');
+        },
+        getCurrentUser: function() {
+          return auth.$getCurrentUser();
+        }
     };
 
     $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
