@@ -9,10 +9,12 @@
 
 <body>
 
+<div ng-controller="AuthController">
+        <a href="#/login" ng-hide="currentUser">Log in</a>
+        <a href="" ng-click="logout()" ng-show="currentUser">Log out</a>
+</div>
 
-            <a href="#/login" ng-hide="currentUser">Log in</a>
-            <a href="" ng-click="logout()" ng-show="currentUser">Log out</a>
-
+<div ng-view class="container"></div>
 
     <script src="lib/angular.js"></script>
     <script src="lib/ng_animate.js"></script>
