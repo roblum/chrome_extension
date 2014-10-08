@@ -8,6 +8,10 @@
 Need to fix:
 - Libraries take a while to load; home screen sometimes gets cut off
 - Category clears out when there are no entries in object
+- Features to add:
+  - Add new directory
+  - Register own account
+  - Security Rules to access only own account & repo
 
 ###Version 1.0
 - Categories working
