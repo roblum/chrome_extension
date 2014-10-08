@@ -12,6 +12,7 @@ Need to fix:
   - Add new directory
   - Register own account
   - Security Rules to access only own account & repo
+  - On load go back to last folder
 
 ###Version 1.0 - 10/06/14
 - Categories working
