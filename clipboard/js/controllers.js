@@ -6,7 +6,7 @@ angular.module('clipApp.controllers', [])
   .controller('HomeController', [function() {
 
   }])
-  .controller('InfoController', ['$scope', 'infoService', 'authService', function($scope, infoService, authService) {
+  .controller('InfoController', ['$scope', 'infoService', 'authService', '$location', function($scope, infoService, authService, $location) {
 
     // Bind user's parties to $scope.parties.
     authService.getCurrentUser().then(function(user) {
@@ -52,6 +52,11 @@ angular.module('clipApp.controllers', [])
               .setAttribute('disabled','disabled');
       }
 
+      $scope.logout = function(){
+          authService.logout();
+          $location.path('/login');
+      }
+
       $scope.hover = false;
 
       $scope.show = function(){
@@ -63,8 +68,15 @@ angular.module('clipApp.controllers', [])
       }
 
   }])
-  .controller('AuthController', ['$scope', 'authService', function($scope, authService) {
+  .controller('AuthController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
 
+    authService.getCurrentUser().then(function(user){
+      if (user) {
+        $location.path('/info');
+      }else{
+        $location.path('/login');
+      }
+    });
     // Object bound to inputs on the register and login pages.
     $scope.user = {email: '', password: ''};
 
