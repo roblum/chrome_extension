@@ -20,6 +20,7 @@ div.overflow-hidden{
 }
 div#directory-container{
     width: overflow-w;
+    margin-bottom: 5%;
 }
 .select{
     display: block;
@@ -40,6 +41,31 @@ div#directory-container{
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     outline:none;
+}
+input {
+    background: gray;
+    border: 0px;
+    padding: 5px 10px;
+    height: 25px;
+    outline: none;
+    color: #fff;
+    float: left;
+    width:230px;
+    font-weight:300;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+    font-family: Lato;
+}
+.button{
+    font-family: Lato;
+    color: white;
+    background: seagreen;
+    font-weight:300;
+    cursor:pointer;
+    outline:none;
+    border:0px;
+    border-radius:5px;
+    margin: 0;
 }
 div#add-directory {
     float: left;
@@ -62,7 +88,7 @@ div#add-directory {
 .input-container{
     width: input-w;
     height: 35px;
-    margin-top:5%;
+    margin-bottom:5%;
 }
 .input-container:first-child{
     margin-top:0;
@@ -72,20 +98,7 @@ div#add-directory {
     position:relative;
     overflow: hidden;
 }
-input {
-    background: gray;
-    border: 0px;
-    padding: 5px 10px;
-    height: 25px;
-    outline: none;
-    color: #fff;
-    float: left;
-    width:230px;
-    font-family: Lato;
-    font-weight:300;
-    font-size: 15px;
-    letter-spacing: 0.4px;
-}
+
 .remove{
     background: orange;
     border: 0px;
@@ -102,8 +115,13 @@ input {
 }
 
 /* FORM CSS */
-form{
-    margin-top:5%;
+form h2 {
+    font-family: Lato;
+    color: orange;
+    margin-top: 0px;
+}
+form h2::selection {
+    color: #fff;
 }
 form input{
     border: 2px solid seagreen;
@@ -112,19 +130,22 @@ form input{
     color:gray;
 }
 form button{
-    font-family: Lato;
     float: left;
-    color: white;
-    background: seagreen;
     padding: 5px 10px;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:300;
-    outline:none;
-    border:0px;
     font-size:15px;
     margin:0;
     margin-top:5%;
+}
+form.add-content input{
+    margin-bottom:5%;
+}
+#login{
+    margin-top:5%;
+}
+#logout{
+    font-size:15px;
+    padding: 5px 10px;
+    float:right;
 }
 
 /* CLIPBOARD CSS */
@@ -136,15 +157,9 @@ form button{
     width:120px;
 }
 div.copy-button, div.edit-button {
-    font-family: Lato;
     float: left;
-    color: white;
-    background: seagreen;
     padding: 1px 5px 5px;
-    border-radius:5px;
-    cursor:pointer;
     opacity:0.9;
-    font-weight:300;
     margin-left:5px;
 }
 
