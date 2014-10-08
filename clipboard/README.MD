@@ -1,6 +1,6 @@
 #Firebase Clipboard
 
-###Version 2.0
+###Version 2.0 - 10/08/14
 - Logins working via email & password (only authorized users can access)
 - Firebase remembers login status
 - Logout button added
@@ -13,7 +13,7 @@ Need to fix:
   - Register own account
   - Security Rules to access only own account & repo
 
-###Version 1.0
+###Version 1.0 - 10/06/14
 - Categories working
 - Features:
   - Double click X to remove snippet
