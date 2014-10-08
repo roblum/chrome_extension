@@ -17,7 +17,6 @@ angular.module('clipApp.controllers', [])
     }
 
     $scope.addSnippet = function(text){
-            console.log('snippet ran');
             $scope.snippets.$add({text: text});
             document.querySelector('form input').value = '';
         }
