@@ -3,9 +3,6 @@
 /* Controllers */
 
 angular.module('clipApp.controllers', [])
-  .controller('HomeController', [function() {
-
-  }])
   .controller('InfoController', ['$scope', 'infoService', 'authService', '$location', function($scope, infoService, authService, $location) {
 
     // Bind user's parties to $scope.parties.
