@@ -14,17 +14,19 @@
             <div class="overflow-container">
                 <input type="text" ng-model="snippet.text" ng-change="snippets.$save(snippet)" disabled ng-blur="disable($index)">
                 <div class="hover-container" ng-if="hover">
-                    <div class="edit-button" id="edit-{{$index}}" ng-click="edit($index)">edit</div>
-                    <div class="copy-button" id="copy-{{$index}}" ng-click="copy($index)">copy</div>
+                    <div class="edit-button button" id="edit-{{$index}}" ng-click="edit($index)">edit</div>
+                    <div class="copy-button button" id="copy-{{$index}}" ng-click="copy($index)">copy</div>
                     <button ng-dblclick="snippets.$remove(id)" class="remove">X</button>
                 </div>
             </div>
         </div>
 
-        <form ng-submit="addSnippet(newSnippetText)" ng-if="currentDir">
+        <form class="add-content" ng-submit="addSnippet(newSnippetText)" ng-if="currentDir">
             <input ng-model="newSnippetText" />
-            <button type="submit">add message</button>
+            <button class="button" type="submit">add message</button>
         </form>
+
+        <button class="button" id="logout" ng-click="logout()">Logout</button>
 
     </div>
 </div>
