@@ -53,8 +53,6 @@ angular.module('clipApp.controllers', [])
           $location.path('/login');
       }
 
-      $scope.hover = false;
-
       $scope.show = function(){
         this.hover = true;
       }
