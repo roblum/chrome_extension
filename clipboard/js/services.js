@@ -21,7 +21,7 @@ angular.module('clipApp.services', [])
               ,sync = $firebase(ref); // create an AngularFire reference to the data
 
               // download the data into a local object
-              console.log(sync.$asArray());
+              // console.log(sync.$asArray());
               return sync.$asArray();
         },
       };
@@ -35,7 +35,7 @@ angular.module('clipApp.services', [])
     var authServiceObject = {
         login: function(user, optionalCallback) {
           auth.$login('password', user).then(function(data) {
-            console.log(data);
+            // console.log(data);
             // optionalCallback();
             $location.path('/info');
           });
