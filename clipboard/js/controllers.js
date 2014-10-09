@@ -10,7 +10,7 @@ angular.module('clipApp.controllers', [])
       if (user) {
           $scope.rootItems = infoService.firstPull(user);
           $scope.currentDir = $scope.rootItems[$scope.rootItems.length - 1];
-          $scope.getNewData();
+          $scope.getNewData(); // Default currentDir to users repo and pull data
       };
     });
 

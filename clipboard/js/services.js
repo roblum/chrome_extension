@@ -8,16 +8,16 @@ angular.module('clipApp.services', [])
     var dataRef = new Firebase(FIREBASE_URL);
     var fireData = $firebase(dataRef);
 
-    return fireData;
+    return fireData; // Return firebase instance as 'dataService'
   })
   .factory('infoService', function(dataService, $firebase, FIREBASE_URL) {
 
     var infoServiceObject = {
         firstPull : function(user){
-          var firebaseData = dataService.$asArray()
+          var firebaseData = dataService.$asArray() // Store firebase info as an array
               ,userEmail = user.email
               ,userIndex = userEmail.indexOf('@')
-              ,userName = userEmail.slice(0, userIndex).replace(/\./g, "");
+              ,userName = userEmail.slice(0, userIndex).replace(/\./g, ""); // Get username from email for dropdown and remove any '.' as not allowed in firebase
 
           firebaseData.push({$id : userName});
           return firebaseData;
@@ -39,10 +39,9 @@ angular.module('clipApp.services', [])
     var auth = $firebaseSimpleLogin(authRef);
 
     var authServiceObject = {
-        login: function(user, optionalCallback) {
+        login: function(user) {
           auth.$login('password', user).then(function(data) {
             // console.log(data);
-            // optionalCallback();
             $location.path('/info');
           });
         },
