@@ -13,8 +13,14 @@ angular.module('clipApp.services', [])
   .factory('infoService', function(dataService, $firebase, FIREBASE_URL) {
 
     var infoServiceObject = {
-        firstPull : function(){
-          return dataService.$asArray();
+        firstPull : function(user){
+          var firebaseData = dataService.$asArray()
+              ,userEmail = user.email
+              ,userIndex = userEmail.indexOf('@')
+              ,userName = userEmail.slice(0, userIndex).replace(/\./g, "");
+
+          firebaseData.push({$id : userName});
+          return firebaseData;
         },
         directoryPull : function(value){
           var ref = new Firebase(FIREBASE_URL + value)
