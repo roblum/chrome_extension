@@ -28,11 +28,17 @@
                         <option></option>
                     </select>
                 </div>
+
+                <div class="selection-container">
+                    <select ng-model="underscore[$index]" ng-options="version for version in underscore" ng-if="underscoreBool" class="select">
+                        <option></option>
+                    </select>
+                </div>
             </div>
 
-            <textarea ng-if="currentDir" id="copy-box" class="select">{{currentDir.pre}}{{jquery[$index]}}{{angular[$index]}}{{currentDir.close}}</textarea>
+            <textarea ng-if="currentDir" id="copy-box" class="select">{{currentDir.pre}}{{jquery[$index]}}{{underscore[$index]}}{{angular[$index]}}{{currentDir.close}}</textarea>
 
-            <button id="copy-button" class="btn btn-primary" ng-if="jquery[$index] || angular[$index]">Copy</button>
+            <button id="copy-button" class="btn btn-primary" ng-if="jquery[$index] || angular[$index] || underscore[$index]">Copy</button>
 
         </div>
 
