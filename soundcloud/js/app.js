@@ -1,11 +1,23 @@
 
-SC.initialize({
-     client_id: "314d9300b782646cb5bf3e0808f8db20"
-});
+var soundCloud = {
+     init : function(){
+          soundCloud.scInit();
+          soundCloud.scGet();
+     }
+     ,scInit : function(){
+          SC.initialize({
+               client_id: "314d9300b782646cb5bf3e0808f8db20"
+          });
+     }
+     ,scGet : function(){
+          SC.get("/users", function(tracks){
+               console.log(tracks);
+          });
+     }
+}
 
-SC.get("/me", function(tracks){
-     console.log(tracks);
-});
+
+soundCloud.init();
 
 var firebase = new Firebase("https://proserv-soundcloud.firebaseIO.com");
 
