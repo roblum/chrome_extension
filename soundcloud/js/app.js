@@ -2,15 +2,15 @@
 var soundCloud = {
      init : function(){
           soundCloud.scInit();
-          soundCloud.scGet();
+          soundCloud.scGet('infernosheep');
      }
      ,scInit : function(){
           SC.initialize({
                client_id: "314d9300b782646cb5bf3e0808f8db20"
           });
      }
-     ,scGet : function(){
-          SC.get("/users", function(tracks){
+     ,scGet : function(user){
+          SC.get('/users/' + user + '/playlists', function(tracks){
                console.log(tracks);
           });
      }
