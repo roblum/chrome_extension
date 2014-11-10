@@ -1,0 +1,27 @@
+{
+  "name": "Share Soundcloud",
+  "version": "0.1.0",
+  "author": {
+    "name": "Rob Lum",
+    "email": "robert.lum@offerpop.com",
+    "url": "https://github.com/roblum"
+  },
+  "description": "Share Soundcloud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roblum/Offerpop"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-uglify": "~0.1.2",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-cssmin": "0.10.0",
+    "grunt-contrib-stylus": "0.18.0"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "devDependencies": {
+    "grunt-s3": "^0.2.0-alpha.3"
+  }
+}
