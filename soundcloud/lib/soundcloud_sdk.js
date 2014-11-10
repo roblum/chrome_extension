@@ -1402,7 +1402,6 @@ window.SC.URI = function(uri, options) {
             } else {
                 uri.query.client_id = this.options.client_id
             }
-            console.log(uri);
             return uri
         },
         _getAll: function(path, query, callback, collection) {
