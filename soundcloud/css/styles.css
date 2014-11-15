@@ -3,6 +3,35 @@ body {
 	min-height: 150px;
 }
 
-#self-username{
-	width:100%;
+input {
+    border: 1px solid #ccc;
+    border-radius:10px;
+    padding: 5px 10px;
+    height: 25px;
+    outline: none;
+    color: #000;
+    float: left;
+    width: 90%;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+button {
+	width: 50%;
+	background: #ccc;
+	border: 0px;
+	border-radius: 10px;
+	padding: 5% 10%;
+	color: #fff;
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.new-user-form{
+	display:none;
+	text-align: center;
+}
+
+.main-menu{
+	display:none;
 }
