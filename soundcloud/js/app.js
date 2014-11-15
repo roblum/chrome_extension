@@ -1,37 +1,54 @@
 (function(){})();
 
-     var cookieName = 'soundcloud';
+     var cookieName = 'soundcloud'
+          ,$newUserForm = $('.new-user-form')
+          ,$mainMenu = $('.main-menu');
+
+     var scClientId = '314d9300b782646cb5bf3e0808f8db20';
+     var firebase = new Firebase("https://proserv-soundcloud.firebaseIO.com");
 
      var general = {
           init : function(){
-               userInfo.checkNewUser();
+               userInfo.validateUser();
           }
-     }
+     };
 
      var userInfo = {
-          checkNewUser : function(){
+          validateUser : function(){
                var user = cookies.read();
 
                console.log('user', user);
 
                if (!user){
-                    var $newUserForm = $('.new-user-form');
-
-                    $newUserForm.show();
+                    $newUserForm.fadeIn();
                     $newUserForm.click(function(){
                          userInfo.initSelf();
                     }); 
                } else {
-                    soundCloud.init(user);
+                    $mainMenu.fadeIn();
+                    fireBase.loadRoot();
 
-                    $('.main-menu').fadeIn();
+                    $mainMenu.on('click', '.user-choice', function(){
+                         var current = this.id;
+
+                         if (current === 'self'){
+                              soundCloud.init(user);               
+                         } else if (current === 'friends'){
+
+                         }
+                    });
                }
           },
           initSelf : function(){
                var username = $('#self-username').val();
-                    console.log(username);
+               console.log(username);
                cookies.create(cookieName,  username );
+          },
+          handleUser : function(user){
+
+               
           }
+
      };
 
      var cookies = {
@@ -68,7 +85,7 @@
           },
           scInit : function(){
                SC.initialize({
-                    client_id: "314d9300b782646cb5bf3e0808f8db20"
+                    client_id: scClientId 
                });
           },
           scGet : function(user){
@@ -78,19 +95,26 @@
           }
      };
 
-// soundCloud.init();
 
-// var firebase = new Firebase("https://proserv-soundcloud.firebaseIO.com");
+     var fireBase = {
+          loadRoot : function(){
+               firebase.on('value', function(ss){
+                    console.log(ss.val());
+                    var allData = ss.val();
 
-// firebase.on('value', function(ss){
-//      console.log(ss.val());
-//      var allData = ss.val();
-// });
+                    var users = allData.Users;
+                    console.log(users);
+               });
+          }
+     };
 
-// firebase.on('child_changed', function(ss){
-//      console.log('child changed:');
-//      console.log(ss.val());
-//      console.log(ss.ref().name());
-// });
+
+
+
+firebase.on('child_changed', function(ss){
+     console.log('child changed:');
+     console.log(ss.val());
+     console.log(ss.ref().name());
+});
 
 general.init();
