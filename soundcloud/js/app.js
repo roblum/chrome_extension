@@ -1,6 +1,6 @@
 (function(){})();
 
-     var cookieName = 'soundcloud'
+     var cookieName = 'soundcloud';
 
      var general = {
           init : function(){
@@ -22,7 +22,7 @@
                          userInfo.initSelf();
                     }); 
                } else {
-                    soundCloud.init();
+                    soundCloud.init(user);
 
                     $('.main-menu').fadeIn();
                }
@@ -62,9 +62,9 @@
      };
 
      var soundCloud = {
-          init : function(){
+          init : function(user){
                soundCloud.scInit();
-               soundCloud.scGet('infernosheep');
+               soundCloud.scGet(user);
           },
           scInit : function(){
                SC.initialize({
