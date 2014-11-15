@@ -1,30 +1,50 @@
 (function(){})();
 
+var general = {
+     init : function(){
+          userInfo.checkNewUser();
+     }
+}
+
+var userInfo = {
+     checkNewUser : function(){
+          cookies.read();
+     },
+     self : function(){
+          cookies.create('soundcloud','');
+     }
+};
+
 var cookies = {
-     create : function(name, value, days){
-          if (days){
-               var date = new Date();
-               date.setTime(date.getTime()+(days*24*60*60*1000));
-               var expires = "; expires="+date.toGMTString();
-          } else {
-               var expires = "";
-               document.cookie = name+"="+value+expires+"; path=/";
-          }
+     create : function(name, value){
+               var d = new Date()
+                    ,converted = d.getTime() + (999*24*60*60*1000);
+
+                    d.setTime(converted);
+                    
+               var expires = "; expires=" + d.toGMTString();
+
+                    document.cookie = name + "=" + value + expires + "; path=/";
      },
      read : function(){
-          if(document.cookie.indexOf('soundcloud') == -1) {
-               // cookie doesn't exist, create it now
-               console.log(document.cookie);
-               document.cookie = 'soundcloud=1';
-          }
-          else {
-               // not first visit, so alert
-               console.log('else', document.cookie);
-               alert('You refreshed!');
-          }
+               var index = document.cookie.indexOf('soundcloud');
+          console.log(document.cookie.slice(index, document.cookie.length));
+
+          // if(document.cookie.indexOf('soundcloud') == -1) {
+          //      // cookie doesn't exist, create it now
+          //      console.log(document.cookie);
+          //      // document.cookie = 'soundcloud=1';
+          // }
+          // else {
+          //      // Return user
+          //      console.log('return user', document.cookie);
+          //      // console.log(document.cookie)
+          // }
      }
 
 };
+
+cookies.read();
 
 var soundCloud = {
      init : function(){
@@ -41,10 +61,8 @@ var soundCloud = {
                console.log(tracks);
           });
      }
-}
+};
 
-cookies.create('doRedirect','true','999');
-cookies.read();
 soundCloud.init();
 
 var firebase = new Firebase("https://proserv-soundcloud.firebaseIO.com");
