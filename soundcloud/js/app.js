@@ -10,8 +10,10 @@ var userInfo = {
      checkNewUser : function(){
           cookies.read();
      },
-     self : function(){
-          cookies.create('soundcloud','');
+     initSelf : function(){
+          var username = $('#self-username').val();
+          
+          cookies.create('soundcloud', username );
      }
 };
 
@@ -44,7 +46,9 @@ var cookies = {
 
 };
 
-cookies.read();
+userInfo.initSelf();
+
+// cookies.read();
 
 var soundCloud = {
      init : function(){
