@@ -1,6 +1,7 @@
 body {
 	width: 250px;
 	min-height: 150px;
+	text-align: center;
 }
 
 input {
@@ -25,6 +26,8 @@ button {
 	color: #fff;
 	font-size: 16px;
 	margin-top: 10px;
+	outline:none;
+	cursor: pointer;
 }
 
 .new-user-form{
