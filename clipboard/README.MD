@@ -14,6 +14,11 @@ Need to fix:
   - Security Rules to access only own account & repo
   - On load go back to last folder
 
+![alt tag](screenshots/login_blank.jpg)
+![alt tag](screenshots/login_screen.jpg)
+![alt tag](screenshots/repo_screen.jpg)
+![alt tag](screenshots/dropdown.jpg)
+
 ###Version 1.0 - 10/06/14
 - Categories working
 - Features:
