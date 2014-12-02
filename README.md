@@ -4,3 +4,4 @@ Creating Chrome Extensions
 - Library Repo (jQuery/Angularjs CDN)
 - Clipboard Copy (Angular/Firebase)
 - Bug Tracker (QA Repo for Professional Services)
+- Soundcloud (Control Soundcloud; Share currenty listening with)
